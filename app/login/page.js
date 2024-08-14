@@ -78,7 +78,6 @@ export default function Signup() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
         if (user) {
           // User is signed in, store UID in sessionStorage
