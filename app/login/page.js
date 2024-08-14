@@ -76,18 +76,23 @@ export default function Signup() {
   const [uid, setUid] = useState(null);
   //const [error, setError] = useState("");
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const userUid = user.uid;
-      setUid(userUid);
-      sessionStorage.setItem("uid", userUid);
-      //console.log(`User is logged in, and uid: ${userUid}`);
-    } else {
-      setUid(null);
-      sessionStorage.removeItem("uid");
-      //console.log(`User signed out, and the uid currently: null`);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, store UID in sessionStorage
+          sessionStorage.setItem("uid", user.uid);
+          setUid(user.uid);
+        } else {
+          // User is signed out, remove UID from sessionStorage
+          sessionStorage.removeItem("uid");
+          setUid(null);
+        }
+      });
     }
-  });
+  }, []);
+  
   const toggleDrawer = (open) => (event) => {
     if (
       event.type === "keydown" &&
