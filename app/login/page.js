@@ -519,7 +519,7 @@ export default function Signup() {
                   pb={2}
                   mt={2}
                 >
-                  Don't have an account?{" "}
+                  Don&apos;t have an account?{" "}
                   <Link
                     href="./signup"
                     sx={{ fontWeight: "bold", textDecoration: "underline" }}
