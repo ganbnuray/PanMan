@@ -1,5 +1,5 @@
 ![Panman Repo Banner](/public/banner.png)
-# PanMan
+# ✨PanMan✨
 > PanMan helps you effortlessly track pantry items, stay organized, and reduce food waste. With AI-generated recipes, whether you’re a busy professional, home cook, or kitchen experimenter, PanMan supports your culinary adventures.
 
 ## Installation
