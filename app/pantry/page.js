@@ -74,7 +74,14 @@ const theme = createTheme({
   },
 });
 export default function Pantry() {
-  const uid = sessionStorage.getItem("uid");
+  const [uid, setUid] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const uid = sessionStorage.getItem("uid");
+      setUid(uid);
+    }
+  }, []);
 
   const [itemName, setItemName] = useState("");
   const [amount, setQuantity] = useState("");
