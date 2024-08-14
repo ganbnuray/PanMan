@@ -11,7 +11,7 @@ import {
   Divider,
   TextField,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Istok_Web, Galada } from "next/font/google";
 import { useRouter } from "next/navigation";
