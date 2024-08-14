@@ -69,7 +69,14 @@ const theme = createTheme({
   },
 });
 export default function Pantry() {
-  const uid = sessionStorage.getItem("uid");
+  const [uid, setUid] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const uid = sessionStorage.getItem("uid");
+      setUid(uid);
+    }
+  }, []);
   //console.log(uid);
   const [inventory, setInventory] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -85,15 +92,20 @@ export default function Pantry() {
     });
     setInventory(inventoryList);
   };
+
   useEffect(() => {
-    fetchAndLogInventory();
-  }, []);
+    if (uid) {
+      fetchAndLogInventory();
+    }
+  }, [uid]);
 
   const getRecipe = async () => {
     const ingredients = filteredInventory.map((item) => item.id);
+    console.log(ingredients);
     const prompt = `Generate a recipe using these ingredients: ${ingredients.join(
       ", "
-    )}. You don't have to use all the ingredients in a single recipe. 
+    )}. You don't have to use all the ingredients in a single recipe. Don't use more than 3 ingredients from the list. 
+Create a balanced and appealing recipe.
       Format the recipe with clear sections for the title, description, ingredients, instructions, and tips. 
       Use Markdown formatting for readability. Here is the structure:
 
@@ -280,7 +292,7 @@ export default function Pantry() {
       item.id.toLowerCase().includes(searchQuery.toLowerCase()) &&
       item.quantity !== null
   );
-
+  console.log(filteredInventory);
   return (
     <ThemeProvider theme={theme}>
       <>
