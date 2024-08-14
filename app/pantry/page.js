@@ -94,7 +94,7 @@ export default function Pantry() {
   };
   useEffect(() => {
     fetchAndLogInventory();
-  }, []);
+  }, [fetchAndLogInventory]);
   const handleSubmit = (e) => {
     e.preventDefault();
     addItem2(itemName, Number(amount));
