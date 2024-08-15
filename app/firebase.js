@@ -8,12 +8,12 @@ import { GoogleAuthProvider, getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBCb8y9xbAdgn3sHTNrMsWLXG0N1utsk4M",
-  authDomain: "pantryapp-19360.firebaseapp.com",
-  projectId: "pantryapp-19360",
-  storageBucket: "pantryapp-19360.appspot.com",
-  messagingSenderId: "508214670209",
-  appId: "1:508214670209:web:d2e4581f1fa75347a0ae80",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
